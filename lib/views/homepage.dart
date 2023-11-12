@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../shared/appstyle.dart';
@@ -69,20 +70,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 Column(
                   children: [
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.34,
-                        child: ListView.builder(
+                      height: MediaQuery.of(context).size.height * 0.34,
+                      child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: 6,
-                            itemBuilder: (context, index){
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: MediaQuery.of(context).size.height,
-                              width: MediaQuery.of(context).size.width*0.6,
-                              color: Colors.grey,
-                            ),
-                          );
-                        }),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(16))),
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width * 0.6,
+                              ),
+                            );
+                          }),
                     ),
                     Column(
                       children: [
@@ -91,14 +95,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           children: [
                             Text(
                               "Latest Shoes",
-                              style: appStyle(14, Colors.black, FontWeight.bold),
+                              style:
+                                  appStyle(14, Colors.black, FontWeight.bold),
                             ),
                             Row(
                               children: [
                                 Text(
                                   "Show All",
-                                  style:
-                                      appStyle(14, Colors.black, FontWeight.w500),
+                                  style: appStyle(
+                                      14, Colors.black, FontWeight.w500),
                                 ),
                                 const Icon(Icons.arrow_right, size: 30)
                               ],
@@ -107,21 +112,41 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         )
                       ],
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                          itemCount: 3,
-                          itemBuilder: (context, index){
-                        return Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Container(
-                            height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width*0.3,
-                            color: Colors.yellow,
-                          ),
-                        );
-                      }),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.13,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 6,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 0.2,
+                                        blurRadius: 0.1,
+                                        offset: Offset(0, 1)
+                                      )
+                                    ],
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16))),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.12,
+                                  width: MediaQuery.of(context).size.width * 0.28,
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                        "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/76976120-1c43-4b97-8e7e-251f0b9684e8/air-force-1-shadow-shoes-FP6HDr.png",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
                     )
                   ],
                 ),

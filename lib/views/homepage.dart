@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:online_shopping_app/shared/product_card.dart';
 
 import '../shared/appstyle.dart';
 
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xFFE2E2E2),
         body: SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Stack(
@@ -75,17 +77,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           scrollDirection: Axis.horizontal,
                           itemCount: 6,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.grey,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(16))),
-                                height: MediaQuery.of(context).size.height,
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                            );
+                            return const ProductCard(image: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b7d9211c-26e7-431a-ac24-b0540fb3c00f/air-force-1-07-shoes-rWtqPn.png",
+                                name: "Nike Air Force",
+                                category: "Men's Shoes",
+                                price: "\$ 90.00",
+                                id: "1");
                           }),
                     ),
                     Column(
@@ -123,26 +119,25 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  decoration: const BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        spreadRadius: 0.2,
-                                        blurRadius: 0.1,
-                                        offset: Offset(0, 1)
-                                      )
-                                    ],
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(16))),
+                                  decoration:  const BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black38,
+                                            spreadRadius: 0.1,
+                                            blurRadius: 1,
+                                            offset: Offset(0, 1))
+                                      ],
+                                    color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(16))),
                                   height:
-                                      MediaQuery.of(context).size.height * 0.12,
-                                  width: MediaQuery.of(context).size.width * 0.28,
+                                      MediaQuery.of(context).size.height,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.28,
                                   child: CachedNetworkImage(
-                                    imageUrl:
-                                        "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/76976120-1c43-4b97-8e7e-251f0b9684e8/air-force-1-shadow-shoes-FP6HDr.png",
-                                    fit: BoxFit.cover,
-                                  ),
+                                      imageUrl:
+                                          "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/76976120-1c43-4b97-8e7e-251f0b9684e8/air-force-1-shadow-shoes-FP6HDr.png",
+                                     ),
                                 ),
                               );
                             }),

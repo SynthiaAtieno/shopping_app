@@ -50,7 +50,9 @@ class _ProductCardState extends State<ProductCard> {
                             DecorationImage(image: NetworkImage(widget.image))),
                   ),
                   Positioned(
-                    right: 10,
+                   right: 10,
+                   top: 5,
+
                     child: GestureDetector(
                         onTap: () {},
                         child: const Icon(Icons.favorite_outline)),
@@ -92,7 +94,7 @@ class _ProductCardState extends State<ProductCard> {
                                 label: const Text(" "),
                                 selected: selected,
                                 visualDensity: VisualDensity.compact,
-                                selectedColor: Colors.black,
+                                selectedColor: Colors.grey,
                               )
                             ],
                           )
